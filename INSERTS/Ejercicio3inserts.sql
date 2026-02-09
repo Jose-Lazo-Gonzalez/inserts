@@ -1,0 +1,98 @@
+/* SECUENCIAS */
+CREATE SEQUENCE seq_empresa START WITH 1 INCREMENT BY 1 NOCACHE;
+CREATE SEQUENCE seq_correo START WITH 1 INCREMENT BY 1 NOCACHE;
+CREATE SEQUENCE seq_telefono START WITH 1 INCREMENT BY 1 NOCACHE;
+CREATE SEQUENCE seq_sede START WITH 1 INCREMENT BY 1 NOCACHE;
+CREATE SEQUENCE seq_departamento START WITH 1 INCREMENT BY 1 NOCACHE;
+CREATE SEQUENCE seq_equipo START WITH 1 INCREMENT BY 1 NOCACHE;
+CREATE SEQUENCE seq_programador START WITH 1 INCREMENT BY 1 NOCACHE;
+CREATE SEQUENCE seq_proyecto START WITH 1 INCREMENT BY 1 NOCACHE;
+
+
+/* EMPRESA */
+INSERT INTO EMPRESA VALUES (seq_empresa.NEXTVAL,'TechSolutions','B12345678',911223344,120,'Sociedad limitada','Mediana');
+INSERT INTO EMPRESA VALUES (seq_empresa.NEXTVAL,'DataCorp','A87654321',933445566,15,'Autónomo','Pequeña');
+
+
+/* CORREOS */
+INSERT INTO CORREOS VALUES (seq_correo.NEXTVAL,'info@techsolutions.com',1);
+INSERT INTO CORREOS VALUES (seq_correo.NEXTVAL,'rrhh@techsolutions.com',1);
+INSERT INTO CORREOS VALUES (seq_correo.NEXTVAL,'contacto@datacorp.com',2);
+
+
+/* TELEFONOS */
+INSERT INTO TELEFONOS VALUES (seq_telefono.NEXTVAL,911000111,1);
+INSERT INTO TELEFONOS VALUES (seq_telefono.NEXTVAL,933222333,2);
+
+
+/* SEDE */
+INSERT INTO SEDE VALUES (seq_sede.NEXTVAL,'Sede Central','Gran Via',10,'Madrid','Laura Gomez',1);
+INSERT INTO SEDE VALUES (seq_sede.NEXTVAL,'Sede Barcelona','Diagonal',120,'Barcelona','Carlos Ruiz',2);
+
+
+
+/* DEPARTAMENTO */
+INSERT INTO DEPARTAMENTO VALUES (seq_departamento.NEXTVAL,'Desarrollo',250000,'Ana Torres',1);
+INSERT INTO DEPARTAMENTO VALUES (seq_departamento.NEXTVAL,'Ciberseguridad',150000,'Miguel Santos',1);
+
+
+/* FUNCION */
+INSERT INTO FUNCION VALUES ('F01','Backend',1);
+INSERT INTO FUNCION VALUES ('F02','Frontend',1);
+INSERT INTO FUNCION VALUES ('F03','Auditoria',2);
+
+
+
+/* EQUIPO */
+INSERT INTO EQUIPO VALUES (seq_equipo.NEXTVAL,'Equipo Alpha',6,'Backend','Javier Molina');
+INSERT INTO EQUIPO VALUES (seq_equipo.NEXTVAL,'Equipo Beta',4,'Seguridad','Lucia Perez');
+
+
+
+/* PROGRAMADOR */
+INSERT INTO PROGRAMADOR VALUES (seq_programador.NEXTVAL,'Daniel','Lopez','Martin','daniel@empresa.com',600111222,SYSDATE,NULL,'12345678A','Desarrollador',1);
+INSERT INTO PROGRAMADOR VALUES (seq_programador.NEXTVAL,'Marta','Garcia',NULL,'marta@empresa.com',600333444,SYSDATE,NULL,'87654321B','Analista',2);
+
+
+
+/* SENIOR */
+INSERT INTO SENIOR VALUES (1,8,'Java y microservicios','Alta');
+
+
+
+/* JUNIOR */
+INSERT INTO JUNIOR VALUES (2,1,'Media',1);
+
+
+
+/* LENGUAJES_SENIOR */
+INSERT INTO LENGUAJES_SENIOR VALUES (1,'Java');
+INSERT INTO LENGUAJES_SENIOR VALUES (1,'SQL');
+
+
+
+/* LENGUAJES_JUNIOR */
+INSERT INTO LENGUAJES_JUNIOR VALUES (2,'Python');
+INSERT INTO LENGUAJES_JUNIOR VALUES (2,'JavaScript');
+
+
+
+/* PROYECTO */
+INSERT INTO PROYECTO VALUES (seq_proyecto.NEXTVAL,'Plataforma Web','Sistema de gestion empresarial',SYSDATE,NULL,'Inicio',NULL);
+INSERT INTO PROYECTO VALUES (seq_proyecto.NEXTVAL,'Modulo Seguridad','Control de accesos',SYSDATE,NULL,'Mitad',1);
+
+
+
+/* DESARROLLA */
+INSERT INTO DESARROLLA VALUES (1,1);
+INSERT INTO DESARROLLA VALUES (2,2);
+
+
+
+
+/* COOPERAN */
+INSERT INTO COOPERAN VALUES (1,2);
+
+
+
+
