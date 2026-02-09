@@ -5,9 +5,10 @@ CREATE TABLE EMPRESA (
     Telefono              NUMBER(9)NOT NULL,
     Num_Empleados         NUMBER(6),
     Tipo                  VARCHAR2(30),
-    Tamaño                VARCHAR2(30)/*Nuevo atributo añadido al diseño*/
+    Tamaño                VARCHAR2(30),/*Nuevo atributo añadido al diseño*/
     CONSTRAINT ck_numempl CHECK (Num_Empleados > 0),
-    CONSTRAINT ck_Tipo CHECK('Tipo' IN ('Autónomo', 'Sociedad limitada', 'Sociedad anonima', 'Cooperativa')),
+    CONSTRAINT ck_Tipo CHECK (Tipo IN ('Autónomo','Sociedad limitada','Sociedad anonima','Cooperativa')),
+
     CONSTRAINT ck_Tamaño CHECK(Tamaño IN('Micro','Pequeña', 'Mediana', 'Grande'))/*Tres Checks implementados nuevos en el diseño pues me parecian interesantes*/
 );
 CREATE TABLE CORREOS (
@@ -44,13 +45,14 @@ CREATE TABLE DEPARTAMENTO (
     CONSTRAINT ck_presupuesto CHECK (presupuesto > 0) /*Nuevo codificado*/
         
 );
-CREATE TABLE FUNCION (/*Nuevo multievaluado añadido al proyecto*/
-    CodFuncion      VARCHAR2(14)
-    Funcion         VARCHAR2(20),
+CREATE TABLE FUNCION (
+    CodFuncion VARCHAR2(14),
+    NombreFuncion VARCHAR2(20),
     CodDepartamento NUMBER(14),
     CONSTRAINT pk_FUNCION PRIMARY KEY (CodFuncion, CodDepartamento),
-    CONSTRAINT fk_FUNCION_DEPARTAMENTO FOREIGN KEY (CodDepartamento)REFERENCES DEPARTAMENTO (CodDepartamento),
+    CONSTRAINT fk_FUNCION_DEPARTAMENTO FOREIGN KEY (CodDepartamento)REFERENCES DEPARTAMENTO (CodDepartamento)
 );
+
 CREATE TABLE EQUIPO (
     CodEquipo       NUMBER(14) PRIMARY KEY,
     Nombre          VARCHAR2(30),
@@ -72,7 +74,7 @@ CREATE TABLE PROGRAMADOR (
     DNI                 VARCHAR2(9)UNIQUE NOT NULL,
     Rol                 VARCHAR2(30),
     CodDepartamento     NUMBER(14),
-    CONSTRAINT ck_rol CHECK(Rol IN('Desarrollador','Analista','Ciberseguridad','Tecnico'))/*Nuevo check añadido al proyecto*/
+    CONSTRAINT ck_rol CHECK(Rol IN('Desarrollador','Analista','Ciberseguridad','Tecnico')),/*Nuevo check añadido al proyecto*/
     CONSTRAINT fk_PROGRAMADOR_DEPARTAMENTO FOREIGN KEY (CodDepartamento)REFERENCES DEPARTAMENTO (CodDepartamento)
         
 );
@@ -81,7 +83,7 @@ CREATE TABLE SENIOR (
     Anos_Senior        NUMBER(2)NOT NULL,
     Experiencia_Previa VARCHAR2(100),
     Calidad            VARCHAR2(30)NOT NULL,
-    CONSTRAINT ck_calidad CHECK(Calidad IN('Baja','Media','Alta'))
+    CONSTRAINT ck_calidad CHECK(Calidad IN('Baja','Media','Alta')),
     CONSTRAINT fk_SENIOR_PROGRAMADOR FOREIGN KEY (CodProgramador)REFERENCES PROGRAMADOR (CodProgramador)
         
 );
@@ -90,7 +92,7 @@ CREATE TABLE JUNIOR (
     Anos_Junior    NUMBER(2)NOT NULL,
     Calidad        VARCHAR2(30)NOT NULL,
     CodSenior      NUMBER(14),
-    CONSTRAINT ck_calidad CHECK(Calidad IN('Baja','Media','Alta'))
+    CONSTRAINT ck_calidad CHECK(Calidad IN('Baja','Media','Alta')),
     CONSTRAINT fk_JUNIOR_PROGRAMADOR FOREIGN KEY (CodProgramador) REFERENCES PROGRAMADOR (CodProgramador), 
     CONSTRAINT fk_JUNIOR_SENIOR FOREIGN KEY (CodSenior)REFERENCES SENIOR (CodProgramador)
 );
@@ -115,7 +117,7 @@ CREATE TABLE PROYECTO (
     /*OTRA DURACION OMITIDA*/
     Estado             VARCHAR2(30),
     CodProyecto_Padre  NUMBER(14),
-    CONSTRAINT ck_estado CHECK(Estado IN('Inicio','Mitad','Finalizando','Terminado'))/*Nuevo check añadido al proyecto*/
+    CONSTRAINT ck_estado CHECK(Estado IN('Inicio','Mitad','Finalizando','Terminado')),/*Nuevo check añadido al proyecto*/
     CONSTRAINT fk_PROYECTO_PADRE FOREIGN KEY (CodProyecto_Padre) REFERENCES PROYECTO (CodProyecto)
        
 );

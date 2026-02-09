@@ -1,10 +1,9 @@
 CREATE TABLE SEDE (/*Ejercicio 1 de prueba sencillo, preguntar dudas de checks, intervalos y restricciones de las pk el lunes*//*Ya preguntadas, corregir y hacer mas ejercicios*/
-    codsede        NUMBER(14), PRIMARY KEY
+    codsede        NUMBER(14) PRIMARY KEY,
     nombre         VARCHAR2(30) NOT NULL,
     calle          VARCHAR2(30) NOT NULL,
     numero         NUMBER(3) NOT NULL,
-    telefono       NUMBER(9) NOT NULL,
-    CONSTRAINT pk_SEDE PRIMARY KEY (CodSede)
+    telefono       NUMBER(9) NOT NULL
 );
 
 CREATE TABLE DOCENTE (
